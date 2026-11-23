@@ -92,6 +92,8 @@ def cmd_check(files):
         items = fm.get("items") or []
         if not items:
             errs.append("items가 비어 있습니다")
+        if any(q in str(fm.get("description") or "") for q in "\"'"):
+            errs.append("description에 곧은 따옴표가 있습니다. 굽은 따옴표(“ ” ‘ ’)로 씁니다")
         if not fm.get("window"):
             errs.append("window(훑은 기간)가 비어 있습니다")
         prev = seen_keys(exclude=[f])
@@ -121,6 +123,9 @@ def cmd_check(files):
             summ = it.get("summary") or ""
             if len(summ) > 600:
                 errs.append(f"{tag}: summary가 {len(summ)}자입니다. 600자 안으로 줄입니다")
+            for k in ("summary", "note", "title_ko"):
+                if any(q in str(it.get(k) or "") for q in "\"'"):
+                    errs.append(f"{tag}: {k}에 곧은 따옴표가 있습니다. 굽은 따옴표(“ ” ‘ ’)로 씁니다")
             if summ.count("“") + summ.count('"') > 2:
                 errs.append(f"{tag}: summary에 인용이 많습니다. 원문 인용은 한 문장까지만 씁니다")
             for k in ("url", "doi"):
