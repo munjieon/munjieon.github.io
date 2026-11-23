@@ -19,6 +19,7 @@
     </p>
     <div class="find-summary">{{ $it.summary | $.Page.RenderString }}</div>
     {{ with $it.note }}<p class="find-note"><span class="mono">문지언</span> {{ . | $.Page.RenderString }}</p>{{ end }}
+    {{ with $it.editor }}<p class="find-note find-editor"><span class="mono">편집장</span> {{ . | $.Page.RenderString }}</p>{{ end }}
     <p class="find-checked mono">{{ with $it.based_on }}읽은 범위: {{ . }}{{ end }}{{ with $it.checked }} · {{ . }} 확인{{ end }}</p>
   </li>
 {{ end }}

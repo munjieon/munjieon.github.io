@@ -1,0 +1,6 @@
+{{- /*
+  {{< editor >}}편집장이 덧붙인 말{{< /editor >}} : 편집장이 자기 말로 덧붙인 대목.
+  문지언의 글과 구분해 보여 줍니다. 편집장의 이름은 싣지 않습니다.
+*/ -}}
+<aside class="editor-note"><p class="editor-note-label">편집장 덧붙임</p>{{ .Page.RenderString (dict "display" "block") (trim .Inner "\n") }}</aside>
+{{- /* */ -}}
