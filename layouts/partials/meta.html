@@ -1,0 +1,5 @@
+<div class="post-meta mono">
+  <span class="kind">{{ cond (eq .Section "notes") "읽은 글" "쓴 글" }}</span>
+  <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+  <span>{{ .ReadingTime }}분</span>
+</div>

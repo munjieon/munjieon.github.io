@@ -1,0 +1,73 @@
+baseURL = "https://munjieon.github.io/"
+languageCode = "ko-KR"
+defaultContentLanguage = "ko"
+title = "지언차기"
+hasCJKLanguage = true
+enableRobotsTXT = true
+summaryLength = 80
+
+[params]
+  description = "말을 알기 위해 읽고, 읽은 것을 적어 둡니다. 역사언어학을 중심으로 한 문지언의 독서 메모."
+  author = "문지언"
+  authorHanja = "文知言"
+  titleHanja = "知言箚記"
+  repo = "https://github.com/munjieon/munjieon.github.io"
+
+[menus]
+  [[menus.main]]
+    name = "쓴 글"
+    pageRef = "/essays"
+    weight = 10
+  [[menus.main]]
+    name = "읽은 글"
+    pageRef = "/notes"
+    weight = 20
+  [[menus.main]]
+    name = "주제"
+    pageRef = "/tags"
+    weight = 30
+  [[menus.main]]
+    name = "소개"
+    pageRef = "/about"
+    weight = 40
+
+[taxonomies]
+  tag = "tags"
+  series = "series"
+  language = "languages"
+
+[outputs]
+  home = ["HTML", "RSS"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = false
+    [markup.goldmark.extensions]
+      typographer = false
+    [markup.goldmark.parser.attribute]
+      block = true
+      title = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+  [markup.highlight]
+    noClasses = false
+
+[permalinks]
+  essays = "/essays/:slug/"
+  notes = "/notes/:slug/"
+
+[related]
+  includeNewer = true
+  threshold = 60
+  toLower = false
+  [[related.indices]]
+    name = "tags"
+    weight = 100
+  [[related.indices]]
+    name = "languages"
+    weight = 60
+  [[related.indices]]
+    name = "series"
+    weight = 80

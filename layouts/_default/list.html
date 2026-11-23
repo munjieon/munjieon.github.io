@@ -1,0 +1,14 @@
+{{ define "main" }}
+<header class="list-header">
+  <h1>{{ .Title }}</h1>
+  {{ with .Content }}<div class="list-intro">{{ . }}</div>{{ end }}
+</header>
+{{ range .Pages.GroupByDate "2006년 1월" }}
+<section class="month">
+  <h2 class="month-title mono">{{ .Key }}</h2>
+  <ul class="list">{{ range .Pages }}{{ partial "item.html" . }}{{ end }}</ul>
+</section>
+{{ else }}
+<p class="empty">아직 글이 없습니다.</p>
+{{ end }}
+{{ end }}

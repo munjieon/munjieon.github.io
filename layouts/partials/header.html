@@ -1,0 +1,15 @@
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="{{ "/" | relURL }}">
+      <span class="brand-ko">{{ site.Title }}</span>
+      <span class="brand-hanja" lang="ko">{{ site.Params.titleHanja }}</span>
+    </a>
+    <nav class="nav" aria-label="주 메뉴">
+      {{ range site.Menus.main }}
+      <a href="{{ .URL }}"{{ if $.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ .Name }}</a>
+      {{ end }}
+      <a href="{{ "search/" | relURL }}" aria-label="검색">검색</a>
+      <button class="theme-toggle" type="button" aria-label="밝기 전환" onclick="(function(){var d=document.documentElement,c=d.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'),n=c==='dark'?'light':'dark';d.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}})()">◐</button>
+    </nav>
+  </div>
+</header>

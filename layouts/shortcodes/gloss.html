@@ -1,0 +1,38 @@
+{{- /*
+  행간 주석(라이프치히 글로스 규칙) 예문.
+  사용법:
+  {{< gloss n="1" lang="ko" src="석보상절 6:1" >}}
+  나랏 말ᄊᆞ미
+  나라-ㅅ 말ᄊᆞᆷ-이
+  country-GEN speech-NOM
+  '나라의 말이'
+  {{< /gloss >}}
+  - 마지막 줄이 따옴표(' ‘ ")로 시작하면 번역 줄로 처리합니다.
+  - 나머지 줄은 공백 기준으로 낱말을 세로 정렬합니다. 첫 줄에 lang 속성이 붙습니다.
+  - 두 글자 이상 대문자 약어(GEN, NOM, 3SG)는 작은 대문자로 표시합니다.
+*/ -}}
+{{- $lines := slice -}}
+{{- range split (trim .Inner "\n") "\n" -}}{{- with trim . " \t\r" -}}{{- $lines = $lines | append . -}}{{- end -}}{{- end -}}
+{{- $trans := "" -}}
+{{- if gt (len $lines) 0 -}}
+  {{- $last := index $lines (sub (len $lines) 1) -}}
+  {{- if findRE `^['‘"“]` $last -}}{{- $trans = $last -}}{{- $lines = first (sub (len $lines) 1) $lines -}}{{- end -}}
+{{- end -}}
+{{- $rows := slice -}}{{- $max := 0 -}}
+{{- range $lines -}}{{- $w := split (replaceRE `\s+` " " .) " " -}}{{- $rows = $rows | append (slice $w) -}}{{- if gt (len $w) $max -}}{{- $max = len $w -}}{{- end -}}{{- end -}}
+{{- $lang := .Get "lang" -}}
+<figure class="gloss"{{ with .Get "n" }} data-n="({{ . }})"{{ end }}>
+  <div class="gloss-words">
+  {{- range $i, $_ := seq $max -}}
+    <div class="gloss-col">
+    {{- range $r, $row := $rows -}}
+      {{- $cell := "" -}}{{- if lt $i (len $row) -}}{{- $cell = index $row $i -}}{{- end -}}
+      {{- if eq $r 0 -}}<span class="gl-src"{{ with $lang }} lang="{{ . }}"{{ end }}>{{ $cell }}</span>
+      {{- else -}}<span class="gl-row">{{ replaceRE `\b([0-9]?[A-Z]{2,}[0-9]?)\b` `<abbr class="gl">$1</abbr>` (htmlEscape $cell) | safeHTML }}</span>{{- end -}}
+    {{- end -}}
+    </div>
+  {{- end -}}
+  </div>
+  {{- with $trans }}<div class="gloss-trans">{{ . }}</div>{{ end -}}
+  {{- with $.Get "src" }}<figcaption class="gloss-src">{{ . }}</figcaption>{{ end -}}
+</figure>
