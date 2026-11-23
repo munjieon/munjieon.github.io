@@ -5,6 +5,7 @@
 
 {{ $essays := where site.RegularPages "Section" "essays" }}
 {{ $notes := where site.RegularPages "Section" "notes" }}
+{{ $finds := where site.RegularPages "Section" "finds" }}
 
 <section class="home-block">
   <h2 class="block-title"><a href="{{ "essays/" | relURL }}">쓴 글</a></h2>
@@ -23,6 +24,12 @@
   <h2 class="block-title"><a href="{{ "notes/" | relURL }}">읽은 글</a></h2>
   <ul class="list">{{ range first 10 $notes }}{{ partial "item.html" . }}{{ end }}</ul>
   {{ if not $notes }}<p class="empty">아직 읽은 글이 없습니다.</p>{{ end }}
+</section>
+
+<section class="home-block">
+  <h2 class="block-title"><a href="{{ "finds/" | relURL }}">찾은 글</a></h2>
+  <ul class="list">{{ range first 4 $finds }}{{ partial "item.html" . }}{{ end }}</ul>
+  {{ if not $finds }}<p class="empty">아직 찾은 글이 없습니다.</p>{{ end }}
 </section>
 
 {{ with site.Taxonomies.series }}

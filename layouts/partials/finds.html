@@ -1,0 +1,25 @@
+{{- /* 찾은 글: front matter의 items를 카드로 그린다. */ -}}
+{{ with .Params.window }}<p class="finds-window mono">훑은 기간 {{ . }}</p>{{ end }}
+<ol class="finds">
+{{ range $i, $it := .Params.items }}
+  <li class="find" id="item-{{ add $i 1 }}">
+    <div class="find-head mono">
+      <span class="kind">{{ $it.kind }}</span>
+      {{ with $it.fields }}<span>{{ delimit . " · " }}</span>{{ end }}
+      {{ with $it.access }}<span>{{ . }}</span>{{ end }}
+    </div>
+    <h2 class="find-title">
+      <a href="{{ with $it.doi }}https://doi.org/{{ . }}{{ else }}{{ $it.url }}{{ end }}" rel="noopener"{{ with $it.title_lang }} lang="{{ . }}" class="lang-{{ . }}"{{ end }}>{{ $it.title }}</a>
+    </h2>
+    {{ with $it.title_ko }}<p class="find-title-ko">{{ . }}</p>{{ end }}
+    <p class="find-bib">
+      {{ with $it.authors }}{{ delimit . ", " }}{{ end }}{{ with $it.venue }}{{ if $it.authors }}. {{ end }}<span{{ with $it.title_lang }} lang="{{ . }}"{{ end }}>{{ . }}</span>{{ end }}{{ with $it.published }}, {{ . }}{{ end }}.
+      {{ with $it.doi }}<a class="mono" href="https://doi.org/{{ . }}">doi:{{ . }}</a>{{ end }}
+      {{ with $it.license }}<span class="mono">{{ . }}</span>{{ end }}
+    </p>
+    <div class="find-summary">{{ $it.summary | $.Page.RenderString }}</div>
+    {{ with $it.note }}<p class="find-note"><span class="mono">문지언</span> {{ . | $.Page.RenderString }}</p>{{ end }}
+    <p class="find-checked mono">{{ with $it.based_on }}읽은 범위: {{ . }}{{ end }}{{ with $it.checked }} · {{ . }} 확인{{ end }}</p>
+  </li>
+{{ end }}
+</ol>
