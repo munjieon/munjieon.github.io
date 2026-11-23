@@ -1,0 +1,3 @@
+{{- /* {{< lang "zh-Hant" >}}學而時習之{{< /lang >}} : 언어 표지를 달아 지역별 자형이 맞게 나오도록 합니다. ko, zh-Hant, zh-Hans, ja, vi 등 */ -}}
+<span lang="{{ .Get 0 }}" class="lang-{{ .Get 0 }}">{{ .Inner | .Page.RenderString }}</span>
+{{- /* */ -}}

@@ -1,0 +1,5 @@
+<li class="item">
+  <time class="mono" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "01.02" }}</time>
+  <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+  {{ with .Params.tags }}<span class="item-tags">{{ delimit (first 2 .) " · " }}</span>{{ end }}
+</li>

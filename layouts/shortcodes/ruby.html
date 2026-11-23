@@ -1,0 +1,4 @@
+{{- /* {{< ruby "國語" "국어" >}} 또는 {{< ruby base="國語" text="kwok ŋɨʌX" lang="zh-Hant" >}} */ -}}
+{{- $base := .Get "base" | default (.Get 0) -}}{{- $text := .Get "text" | default (.Get 1) -}}
+<ruby{{ with .Get "lang" }} lang="{{ . }}"{{ end }}>{{ $base }}<rp>(</rp><rt>{{ $text }}</rt><rp>)</rp></ruby>
+{{- /* */ -}}

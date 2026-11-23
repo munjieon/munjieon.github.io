@@ -1,0 +1,38 @@
+{{ define "main" }}
+<article class="post">
+  <header class="post-header">
+    {{ if .IsPage }}{{ if or (eq .Section "notes") (eq .Section "essays") }}{{ partial "meta.html" . }}{{ end }}{{ end }}
+    <h1 class="post-title">{{ .Title }}</h1>
+    {{ with .Description }}<p class="post-lead">{{ . }}</p>{{ end }}
+  </header>
+
+  {{ partial "source.html" . }}
+
+  {{ if and (gt (len .TableOfContents) 80) (ne .Params.toc false) }}
+  <details class="toc" open>
+    <summary>목차</summary>
+    {{ .TableOfContents }}
+  </details>
+  {{ end }}
+
+  <div class="post-content" data-pagefind-body>
+    {{ .Content }}
+  </div>
+
+  {{ with .GetTerms "tags" }}
+  <footer class="post-tags">
+    {{ range . }}<a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{ end }}
+  </footer>
+  {{ end }}
+
+  {{ if or (eq .Section "notes") (eq .Section "essays") }}
+  {{ $related := site.RegularPages.Related . | first 4 }}
+  {{ with $related }}
+  <section class="related">
+    <h2>연관 글</h2>
+    <ul class="list">{{ range . }}{{ partial "item.html" . }}{{ end }}</ul>
+  </section>
+  {{ end }}
+  {{ end }}
+</article>
+{{ end }}

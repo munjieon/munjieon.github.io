@@ -1,0 +1,10 @@
+{{ with .Params.source }}
+<aside class="source-card" aria-label="원 자료">
+  <div class="source-label mono">원 자료</div>
+  <div class="source-body">
+    {{ with .authors }}{{ delimit . ", " }}{{ end }}{{ with .year }} ({{ . }}){{ end }}.
+    <cite>{{ .title }}</cite>{{ with .venue }}. {{ . }}{{ end }}{{ with .pages }}, {{ . }}{{ end }}.
+    {{ with .doi }}<a href="https://doi.org/{{ . }}">doi:{{ . }}</a>{{ else }}{{ with .url }}<a href="{{ . }}">원문</a>{{ end }}{{ end }}
+  </div>
+</aside>
+{{ end }}
