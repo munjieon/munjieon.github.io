@@ -23,7 +23,7 @@
 {{< gloss n="1" lang="ko" src="출전" >}}
 철수-가 책-을 읽-었-다
 Cheolsu-NOM book-ACC read-PST-DECL
-'철수가 책을 읽었다.'
+‘철수가 책을 읽었다.’
 {{< /gloss >}}
 
 {{< lang "zh-Hant" >}}不知言，無以知人也{{< /lang >}}

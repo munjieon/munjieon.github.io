@@ -15,14 +15,14 @@ toc: false
 {{< gloss n="1" lang="ko" >}}
 철수-가 책-을 읽-었-다
 Cheolsu-NOM book-ACC read-PST-DECL
-'철수가 책을 읽었다.'
+‘철수가 책을 읽었다.’
 {{< /gloss >}}
 
 {{< gloss n="2" lang="ko" src="《훈민정음》 언해본 서문" >}}
 나랏 말ᄊᆞ미
 나라-ㅅ 말ᄊᆞᆷ-이
 country-GEN speech-NOM
-'나라의 말이'
+‘나라의 말이’
 {{< /gloss >}}
 
 ## 한자와 언어 표지
@@ -42,6 +42,10 @@ country-GEN speech-NOM
 ## IPA와 재구형
 
 {{< ipa "[kʰaŋ]" >}}, {{< ipa "[mal.s͈ɯm]" >}}, 재구형 {{< ipa "*pʰ" >}} 같은 표기가 IPA 글꼴로 나옵니다.
+
+## 따옴표
+
+인용은 “나는 말을 안다”처럼 큰 굽은 따옴표로, 낱말이나 뜻은 ‘헤-’, ‘떠돌다’처럼 작은 굽은 따옴표로 씁니다. 영어 아포스트로피도 Jespersen’s Cycle처럼 굽은 꼴로 씁니다.
 
 ## 각주
 
