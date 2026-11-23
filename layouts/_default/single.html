@@ -1,7 +1,7 @@
 {{ define "main" }}
 <article class="post">
   <header class="post-header">
-    {{ if .IsPage }}{{ if or (eq .Section "notes") (eq .Section "essays") }}{{ partial "meta.html" . }}{{ end }}{{ end }}
+    {{ if .IsPage }}{{ if in (slice "notes" "essays" "finds") .Section }}{{ partial "meta.html" . }}{{ end }}{{ end }}
     <h1 class="post-title">{{ .Title }}</h1>
     {{ with .Description }}<p class="post-lead">{{ . }}</p>{{ end }}
   </header>
@@ -17,6 +17,7 @@
 
   <div class="post-content" data-pagefind-body>
     {{ .Content }}
+    {{ if eq .Section "finds" }}{{ partial "finds.html" . }}{{ end }}
   </div>
 
   {{ with .GetTerms "tags" }}

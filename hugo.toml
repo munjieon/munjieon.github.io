@@ -23,6 +23,10 @@ summaryLength = 80
     pageRef = "/notes"
     weight = 20
   [[menus.main]]
+    name = "찾은 글"
+    pageRef = "/finds"
+    weight = 25
+  [[menus.main]]
     name = "주제"
     pageRef = "/tags"
     weight = 30
@@ -57,6 +61,7 @@ summaryLength = 80
 [permalinks]
   essays = "/essays/:slug/"
   notes = "/notes/:slug/"
+  finds = "/finds/:slug/"
 
 [related]
   includeNewer = true

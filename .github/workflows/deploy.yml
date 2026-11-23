@@ -39,6 +39,7 @@ jobs:
         run: |
           test -f public/index.html
           test -f public/about/index.html
+          test -f public/finds/index.html
           test -f public/pagefind/pagefind-ui.js
           ls public
       - uses: actions/upload-pages-artifact@v3

@@ -1,0 +1,31 @@
+name: 찾은 글 링크 확인
+
+on:
+  pull_request:
+    paths:
+      - "content/finds/**"
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: PyYAML 설치
+        run: pip install pyyaml
+      - name: 바뀐 호 찾기
+        id: files
+        run: |
+          files=$(git diff --name-only --diff-filter=AM origin/${{ github.base_ref }}...HEAD -- 'content/finds/*.md' | grep -v '_index.md' || true)
+          echo "list=$(echo $files)" >> "$GITHUB_OUTPUT"
+          echo "확인할 파일: $files"
+      - name: 형식과 중복 검사
+        if: steps.files.outputs.list != ''
+        run: python3 .claude/skills/finds-digest/scripts/finds.py check ${{ steps.files.outputs.list }}
+      - name: 링크 열어 보기
+        if: steps.files.outputs.list != ''
+        run: python3 .claude/skills/finds-digest/scripts/finds.py links ${{ steps.files.outputs.list }}
