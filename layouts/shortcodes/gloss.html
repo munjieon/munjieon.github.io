@@ -19,13 +19,14 @@
   {{- if findRE `^['‘"“]` $last -}}{{- $trans = $last -}}{{- $lines = first (sub (len $lines) 1) $lines -}}{{- end -}}
 {{- end -}}
 {{- $rows := slice -}}{{- $max := 0 -}}
-{{- range $lines -}}{{- $w := split (replaceRE `\s+` " " .) " " -}}{{- $rows = $rows | append (slice $w) -}}{{- if gt (len $w) $max -}}{{- $max = len $w -}}{{- end -}}{{- end -}}
+{{- range $lines -}}{{- $norm := replaceRE `\s+` " " . -}}{{- $rows = $rows | append $norm -}}{{- $n := len (split $norm " ") -}}{{- if gt $n $max -}}{{- $max = $n -}}{{- end -}}{{- end -}}
 {{- $lang := .Get "lang" -}}
 <figure class="gloss"{{ with .Get "n" }} data-n="({{ . }})"{{ end }}>
   <div class="gloss-words">
   {{- range $i, $_ := seq $max -}}
     <div class="gloss-col">
-    {{- range $r, $row := $rows -}}
+    {{- range $r, $line := $rows -}}
+      {{- $row := split $line " " -}}
       {{- $cell := "" -}}{{- if lt $i (len $row) -}}{{- $cell = index $row $i -}}{{- end -}}
       {{- if eq $r 0 -}}<span class="gl-src"{{ with $lang }} lang="{{ . }}"{{ end }}>{{ $cell }}</span>
       {{- else -}}<span class="gl-row">{{ replaceRE `\b([0-9]?[A-Z]{2,}[0-9]?)\b` `<abbr class="gl">$1</abbr>` (htmlEscape $cell) | safeHTML }}</span>{{- end -}}
