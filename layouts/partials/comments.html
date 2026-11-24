@@ -1,0 +1,41 @@
+{{- /* 글 아래 댓글 칸(giscus, GitHub Discussions). hugo.toml의 [params.comments]에 categoryId가 들어 있을 때만 나온다. */ -}}
+{{- with site.Params.comments }}{{ if and .repo .repoId .category .categoryId }}
+<section class="comments">
+  <h2>댓글</h2>
+  <p class="comments-note">댓글은 GitHub 계정으로 로그인해 남길 수 있습니다.</p>
+  <div class="giscus"></div>
+  <script>
+  (function () {
+    var d = document.documentElement;
+    function theme() {
+      var t = d.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      return t === "dark" ? "dark" : "light";
+    }
+    var s = document.createElement("script");
+    s.src = "https://giscus.app/client.js";
+    s.async = true;
+    s.crossOrigin = "anonymous";
+    var a = {
+      "data-repo": {{ .repo }},
+      "data-repo-id": {{ .repoId }},
+      "data-category": {{ .category }},
+      "data-category-id": {{ .categoryId }},
+      "data-mapping": "pathname",
+      "data-strict": "1",
+      "data-reactions-enabled": "1",
+      "data-emit-metadata": "0",
+      "data-input-position": "top",
+      "data-theme": theme(),
+      "data-lang": "ko",
+      "data-loading": "lazy"
+    };
+    for (var k in a) s.setAttribute(k, a[k]);
+    document.currentScript.parentNode.appendChild(s);
+    new MutationObserver(function () {
+      var f = document.querySelector("iframe.giscus-frame");
+      if (f) f.contentWindow.postMessage({ giscus: { setConfig: { theme: theme() } } }, "https://giscus.app");
+    }).observe(d, { attributes: true, attributeFilter: ["data-theme"] });
+  })();
+  </script>
+</section>
+{{ end }}{{ end -}}

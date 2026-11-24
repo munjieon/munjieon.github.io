@@ -35,5 +35,7 @@
   </section>
   {{ end }}
   {{ end }}
+
+  {{ if and .IsPage (in (slice "notes" "essays" "finds") .Section) }}{{ partial "comments.html" . }}{{ end }}
 </article>
 {{ end }}

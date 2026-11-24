@@ -13,6 +13,14 @@ summaryLength = 80
   titleHanja = "知言箚記"
   repo = "https://github.com/munjieon/munjieon.github.io"
 
+  # 글 아래 댓글 칸(giscus). categoryId를 비우면 댓글 칸을 내보내지 않는다.
+  # 값은 https://giscus.app 에서 저장소를 넣으면 나온다.
+  [params.comments]
+    repo = "munjieon/munjieon.github.io"
+    repoId = "R_kgDOV4wu9g"
+    category = "Announcements"
+    categoryId = "DIC_kwDOV4wu9s4DL3g0"
+
 [menus]
   [[menus.main]]
     name = "쓴 글"
