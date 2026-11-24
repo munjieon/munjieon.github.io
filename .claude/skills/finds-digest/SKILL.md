@@ -59,7 +59,7 @@ python3 .claude/skills/finds-digest/scripts/finds.py seen > $SCRATCH/seen.txt
 
 ## 4. 쓰기
 
-`archetypes/finds.md` 형식으로 `content/finds/<YYYY-MM-DD>.md`를 만든다. 날짜는 발행일(실행일).
+`archetypes/finds.md` 형식으로 `content/finds/<YYYY-MM-DD>.md`를 만든다. 날짜는 발행일(실행일). front matter의 `slug`에는 `python3 scripts/post-numbers.py next finds`가 주는 호 번호를 넣는다. 글 주소는 `/finds/<번호>/`가 된다(리포 `CLAUDE.md` “글 주소”).
 
 - `title`: `찾은 글 2026.12.01` 꼴. `description`: 이번 호에서 가장 눈에 띄는 것 두셋을 한 문장으로.
 - `window`: 훑은 기간 `2026.11.16–2026.12.01`.
@@ -73,6 +73,7 @@ python3 .claude/skills/finds-digest/scripts/finds.py seen > $SCRATCH/seen.txt
 
 ```
 python3 .claude/skills/finds-digest/scripts/finds.py check content/finds/<파일>.md
+python3 scripts/post-numbers.py check
 ```
 
 ## 5. 별도 검토 패스

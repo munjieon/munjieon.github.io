@@ -31,6 +31,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: 글 번호 확인
+        run: python3 scripts/post-numbers.py check
       - name: 사이트 빌드
         run: hugo --gc --minify
       - name: 검색 색인 만들기
