@@ -11,3 +11,4 @@ if grep -rn '^#\{1,6\} .*{{[<%]' content/; then
   exit 1
 fi
 echo "숏코드 자리표시 없음"
+python3 scripts/check-rendered.py "$dir"
