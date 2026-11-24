@@ -1,6 +1,6 @@
 ---
 title: "지언차기를 열며"
-slug: "opening"
+slug: "1"
 date: 2026-11-23
 description: "이 서재의 이름과 다룰 것, 그리고 글을 쓰는 방식에 관하여."
 tags: ["메타"]
