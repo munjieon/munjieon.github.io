@@ -111,6 +111,11 @@ sup[id^="fnref"] a, a.footnote-ref { text-decoration: none; color: var(--accent)
 .ipa { font-family: var(--ipa); font-feature-settings: normal; }
 ruby rt { font-size: .55em; color: var(--muted); font-family: var(--sans); }
 
+/* 편집장 덧붙임 */
+.editor-note { margin: 1.6rem 0; padding: .7rem 1rem; border-left: 3px solid var(--accent); background: var(--card); border-radius: 0 4px 4px 0; }
+.editor-note-label { margin: 0 0 .3rem; font-family: var(--mono); font-size: .8rem; color: var(--accent); }
+.editor-note > p:last-child { margin-bottom: 0; }
+
 /* 행간 주석 예문 */
 .gloss { margin: 1.6rem 0; padding-left: 3rem; position: relative; }
 .gloss[data-n]::before { content: attr(data-n); position: absolute; left: 0; top: 0; color: var(--muted); }
@@ -142,4 +147,5 @@ abbr.gl { font-variant-caps: all-small-caps; letter-spacing: .03em; text-decorat
 .find-summary p { margin: 0 0 .6rem; }
 .find-note { background: var(--card); border-radius: 4px; padding: .5rem .8rem; margin: .4rem 0; font-size: .95rem; }
 .find-note .mono { color: var(--accent); margin-right: .4rem; }
+.find-note.find-editor { border-left: 3px solid var(--accent); border-radius: 0 4px 4px 0; }
 .find-checked { margin: .3rem 0 0; font-size: .75rem; }
