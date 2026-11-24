@@ -30,7 +30,20 @@ def split(text):
     return yaml.safe_load(m.group(1)) or {}, text[m.end():]
 
 
+FN_DEF = re.compile(r"^\[\^([^\]]+)\]:[ \t]*(.*)$", re.M)
+FN_REF = re.compile(r"\[\^([^\]]+)\]")
+
+
+def footnotes(text):
+    """Claude 문서에는 각주가 없으므로 각주를 본문 속 〔 〕로 풀어 넣는다."""
+    defs = {m.group(1): m.group(2).strip() for m in FN_DEF.finditer(text)}
+    text = FN_DEF.sub("", text)
+    text = FN_REF.sub(lambda m: f"〔{defs.get(m.group(1), m.group(1))}〕", text)
+    return re.sub(r"\n{3,}", "\n\n", text)
+
+
 def body(text):
+    text = footnotes(text)
     text = LANG.sub(r"\1", text)
     text = IPA.sub(r"\1", text)
     text = RUBY_POS.sub(r"\1(\2)", text)
