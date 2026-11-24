@@ -35,6 +35,8 @@ jobs:
         run: python3 scripts/post-numbers.py check
       - name: 사이트 빌드
         run: hugo --gc --minify
+      - name: 숏코드 자리표시 확인
+        run: sh scripts/check-build.sh public
       - name: 검색 색인 만들기
         run: npx -y pagefind@1.3.0 --site public
       - name: 결과 확인
