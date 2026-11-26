@@ -1,4 +1,11 @@
 /* 지언차기 기본 스타일 */
+/* IPA 글꼴: Google Fonts는 Charis SIL을 문자 범위별로 쪼개 보내서 폰에서 ˈ ː ə̃ 등이 네모로 깨졌다(2026-11-26).
+   SIL 배포판(6.200, OFL) 전체 파일을 직접 싣는다. .ipa가 있는 쪽에서만 내려받는다. */
+@font-face {
+  font-family: "Charis SIL Web";
+  src: url("/fonts/CharisSIL-Regular.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
 :root {
   --bg: #fbfaf7;
   --fg: #1d1c1a;
@@ -10,7 +17,7 @@
   --serif-ko: "Noto Serif KR", "Source Han Serif K", "AppleMyungjo", serif;
   --serif-tc: "Noto Serif TC", "Source Han Serif TC", "Noto Serif KR", serif;
   --serif-jp: "Noto Serif JP", "Source Han Serif", "Noto Serif KR", serif;
-  --ipa: "Charis SIL", "Doulos SIL", "Gentium Plus", "Noto Serif", serif;
+  --ipa: "Charis SIL Web", "Charis SIL", "Doulos SIL", "Gentium Plus", "Noto Serif", serif;
   --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --measure: 42rem;
 }
