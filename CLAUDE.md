@@ -8,7 +8,7 @@
 - 글은 한국어로만 쓴다.
 
 ## 글의 갈래
-- `content/notes/`(읽은 글): 원 자료 한 편의 충실한 요약. front matter의 `source`를 반드시 채운다. 해석은 “눈여겨볼 지점” 칸에만 쓴다.
+- `content/notes/`(읽은 글): 원 자료 한 편의 충실한 요약. front matter의 `source`를 반드시 채운다. 해석은 “주목할 부분” 칸에만 쓴다.
 - `content/essays/`(쓴 글): 자기 논점이 있는 글. 모든 사실적 주장에 각주로 출처를 단다.
 - `content/finds/`(찾은 글): 격주(매달 1일, 15일)로 웹에서 찾은 자료 5~8건을 소개하는 호. 직접 열어 확인한 자료만, 링크와 짧은 요약만 싣는다. 절차는 `.claude/skills/finds-digest/SKILL.md`.
 
